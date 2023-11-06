@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ReactNode} from 'react';
 import styled from 'styled-components';
 import { Element } from 'react-scroll';
 
@@ -71,7 +71,25 @@ const StyledLink = styled.a`
   }
 `;
 
+const VideoComponent = ({ src, children }: { src: string, children?: ReactNode }) => (
+  <Element name="videoElement">
+    <VideoWrapper>
+      <Video controls>
+        <source src={src} type="video/mp4" />
+        {children}
+      </Video>
+    </VideoWrapper>
+  </Element>
+);
+
 function App() {
+  const videos = [
+    { title: "素材１", src: "videos/ABC.mp4" },
+    { title: "素材２", src: "videos/DEF.mp4" },
+    { title: "素材３", src: "videos/GHI.mp4" },
+    { title: "素材４", src: "videos/JKL.mp4" },
+  ];
+
   return (
     <Container>
       <Title>Positive Computing</Title>
@@ -105,45 +123,14 @@ function App() {
       </Description>
 
       {/* 各VideoWrapperを繰り返す代わりに、この部分をコンポーネント化してpropsでビデオソースを渡すことができます */}
-      <Subheading>素材１</Subheading>
-      <Element name="mainVideo">
-        <VideoWrapper>
-          <Video controls>
-            <source src="videos/ABC.mp4" type="video/mp4" />
+      {videos.map(video => (
+        <React.Fragment key={video.title}>
+          <Subheading>{video.title}</Subheading>
+          <VideoComponent src={video.src}>
             あなたのブラウザはビデオタグをサポートしていません。
-          </Video>
-        </VideoWrapper>
-      </Element>
-
-      <Subheading>素材２</Subheading>
-      <Element name="mainVideo">
-        <VideoWrapper>
-          <Video controls>
-            <source src="videos/DEF.mp4" type="video/mp4" />
-            あなたのブラウザはビデオタグをサポートしていません。
-          </Video>
-        </VideoWrapper>
-      </Element>
-
-      <Subheading>素材３</Subheading>
-      <Element name="mainVideo">
-        <VideoWrapper>
-          <Video controls>
-            <source src="videos/GHI.mp4" type="video/mp4" />
-            あなたのブラウザはビデオタグをサポートしていません。
-          </Video>
-        </VideoWrapper>
-      </Element>
-
-      <Subheading>素材４</Subheading>
-      <Element name="mainVideo">
-        <VideoWrapper>
-          <Video controls>
-            <source src="videos/JKL.mp4" type="video/mp4" />
-            あなたのブラウザはビデオタグをサポートしていません。
-          </Video>
-        </VideoWrapper>
-      </Element>
+          </VideoComponent>
+        </React.Fragment>
+      ))}
       
       <Description>
         いかがでしたか？気分はポジティブになったでしょうか。
