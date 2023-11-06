@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/positive-computing/static/css/main.a55b3996.css",
+    "main.js": "/positive-computing/static/js/main.2ba5220a.js",
+    "static/js/787.231434af.chunk.js": "/positive-computing/static/js/787.231434af.chunk.js",
+    "index.html": "/positive-computing/index.html",
+    "main.a55b3996.css.map": "/positive-computing/static/css/main.a55b3996.css.map",
+    "main.2ba5220a.js.map": "/positive-computing/static/js/main.2ba5220a.js.map",
+    "787.231434af.chunk.js.map": "/positive-computing/static/js/787.231434af.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a55b3996.css",
+    "static/js/main.2ba5220a.js"
+  ]
+}
